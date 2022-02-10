@@ -9,6 +9,12 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+  
+  # Make ready for nix flakes
+  nix.package = pkgs.nixUnstable;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
