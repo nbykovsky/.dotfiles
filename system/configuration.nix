@@ -8,6 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # Include python3
+      # ./python3.nix
     ];
   
   # Make ready for nix flakes
@@ -87,6 +90,13 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     google-chrome
+    (let 
+      my-python-packages = python-packages: with python-packages; [
+         base58
+      ];
+      python-with-my-packages = python3.withPackages my-python-packages;
+     in
+      python-with-my-packages)
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
