@@ -26,4 +26,8 @@ in
     lastpass-cli
     terminator
   ];
+
+  imports = [
+    ../../config/terminator # config for terminator
+  ];
 }
