@@ -23,15 +23,26 @@ let
     };
     meta.homepage = "https://github.com/lewis6991/impatient.nvim/";
   };
+  darkplus-nvim-cust = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "darkplus.nvim";
+    version = "2022-01-18";
+    src = pkgs.fetchFromGitHub {
+      owner = "lunarvim";
+      repo = "darkplus.nvim";
+      rev = "8044a5fcee1b501350864af3215b0a37fca21fdf";
+      sha256 = "18lq8m44c929jwndk4x403qfs1xfj8jwb3pdj5y2xj3hinlqc60v";
+    };
+    meta.homepage = "https://github.com/LunarVim/darkplus.nvim/";
+  };
 in
 {
   enable = true;
   vimAlias = true;
   extraConfig = ''
-    luafile ${path}/lua/user/options.lua
-    luafile ${path}/lua/user/keymaps.lua
-    luafile ${path}/lua/user/nvim-tree.lua
-    luafile ${path}/lua/user/colorscheme.lua
+    luafile ${path}/submodule/lua/user/options.lua
+    luafile ${path}/submodule/lua/user/keymaps.lua
+    luafile ${path}/submodule/lua/user/nvim-tree.lua
+    luafile ${path}/submodule/lua/user/colorscheme.lua
   '';
 
   plugins = with pkgs.vimPlugins; [
@@ -51,7 +62,8 @@ in
     FixCursorHold-nvim
     which-key-nvim 
     
-    vim-code-dark
+    # vim-code-dark
+    darkplus-nvim-cust 
 
     # cmp plugins
     nvim-cmp
