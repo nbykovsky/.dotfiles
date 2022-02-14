@@ -91,6 +91,7 @@
     wget
     google-chrome
     nerdfonts
+    gcc
     (let 
       my-python-packages = python-packages: with python-packages; [
          base58

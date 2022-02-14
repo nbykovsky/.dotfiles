@@ -5,9 +5,12 @@
     nixpkgs.url = "nixpkgs/nixos-21.11";
     home-manager.url = "github:nix-community/home-manager/release-21.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nvimFlake.url = "github:nbykovsky/neovim";
+    nvimFlake.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }: 
+  outputs = { nixpkgs, home-manager, nvimFlake, ... }: 
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -24,7 +27,7 @@
 	homeDirectory = "/home/nik";
 	configuration = {
 	  imports = [
-            ./users/nik/home.nix
+            ({config, ...}: import ./users/nik/home.nix {inherit config nvimFlake pkgs;})
 	  ];
 	};
 	stateVersion = "21.11";

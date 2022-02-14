@@ -36,10 +36,31 @@
         "type": "indirect"
       }
     },
+    "nvimFlake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1644837393,
+        "narHash": "sha256-DIesnXqj6o8IkQCm0AgVrLryITX3p1hkycPXSyba2nY=",
+        "owner": "nbykovsky",
+        "repo": "neovim",
+        "rev": "104da80a280caaba3838dddfb408c32e0bc6894c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nbykovsky",
+        "repo": "neovim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nvimFlake": "nvimFlake"
       }
     }
   },

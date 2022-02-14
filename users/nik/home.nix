@@ -1,7 +1,4 @@
-{ config, pkgs, ... }:
-let 
-  neovimSettings = import ../../config/nvim/nvim.nix;
-in
+{ config, pkgs, nvimFlake, ... }:
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -15,7 +12,7 @@ in
   # Enable home-manager
   programs.home-manager.enable = true;
   # Source big modules
-  programs.neovim = neovimSettings pkgs;
+  programs.neovim = nvimFlake.vimConfig;
 
 
   home.packages = with pkgs; [
