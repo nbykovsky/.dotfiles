@@ -23,25 +23,25 @@
     homeManagerConfigurations = {
       nik = home-manager.lib.homeManagerConfiguration {
         inherit system pkgs;
-	username = "nik";
-	homeDirectory = "/home/nik";
-	configuration = {
-	  imports = [
-            ({config, ...}: import ./users/nik/home.nix {inherit config nvimFlake pkgs;})
-	  ];
-	};
-	stateVersion = "21.11";
-        
+        username = "nik";
+        homeDirectory = "/home/nik";
+        configuration = {
+          imports = [
+                  ({config, ...}: import ./users/nik/home.nix {inherit config nvimFlake pkgs;})
+          ];
+        };
+
+
+	      stateVersion = "21.11"; 
       };
     };
 
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
-
-	modules = [
-          ./system/configuration.nix
-	];
+        modules = [
+                ./system/configuration.nix
+        ];
       }; 
     };
   };

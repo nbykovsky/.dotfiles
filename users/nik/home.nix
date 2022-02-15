@@ -22,9 +22,12 @@
     gnupg
     lastpass-cli
     terminator
+    alacritty
   ];
-
-  imports = [
-    ../../config/terminator # config for terminator
-  ];
+  
+   # lib.modules.awesome.enable = true; 
+ 
+  #  imports = [
+  #   ../../config/terminator # config for terminator
+  # ];
 }
