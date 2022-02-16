@@ -24,10 +24,12 @@
     terminator
     alacritty
   ];
+
+  home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;
   
    # lib.modules.awesome.enable = true; 
  
-  #  imports = [
-  #   ../../config/terminator # config for terminator
-  # ];
+  imports = [
+    ../../config/terminator # config for terminator
+  ];
 }

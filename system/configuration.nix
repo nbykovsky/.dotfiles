@@ -109,7 +109,6 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     google-chrome
-    nerdfonts
     gcc
     (let 
       my-python-packages = python-packages: with python-packages; [
@@ -118,6 +117,10 @@
       python-with-my-packages = python3.withPackages my-python-packages;
      in
       python-with-my-packages)
+  ];
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "Hack" ]; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
