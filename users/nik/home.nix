@@ -26,6 +26,7 @@
   ];
 
   home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;
+  home.file.".config/awesome/rc.lua".source = ../../config/awesome/rc.lua;
   
    # lib.modules.awesome.enable = true; 
  
