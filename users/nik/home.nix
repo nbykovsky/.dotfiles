@@ -33,7 +33,5 @@
  
   imports = [
     ../../config/terminator # config for terminator
-#    ../../config/ssh
   ];
-  # pkgs.runCommand "test" {} ""
 }
