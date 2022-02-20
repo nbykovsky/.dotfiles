@@ -14,6 +14,7 @@
   # Source big modules
   programs.neovim = nvimFlake.vimConfig;
 
+  # programs.ssh.startAgent = true; 
 
   home.packages = with pkgs; [
     # neovim
@@ -32,5 +33,7 @@
  
   imports = [
     ../../config/terminator # config for terminator
+#    ../../config/ssh
   ];
+  # pkgs.runCommand "test" {} ""
 }
