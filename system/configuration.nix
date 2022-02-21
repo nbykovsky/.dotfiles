@@ -19,6 +19,12 @@
     experimental-features = nix-command flakes
   '';
 
+  # binary cache for cardano
+  nix = {
+    binaryCaches          = [ "https://hydra.iohk.io" "https://iohk.cachix.org" ];
+    binaryCachePublicKeys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo=" ];
+  };
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
