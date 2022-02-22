@@ -8,10 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-
-      # Include python3
-      # ./python3.nix
     ];
+  
+  # copied from (modulesPath + "/hardware/network/broadcom-43xx.nix")
+  hardware.enableRedistributableFirmware = true;
   
   # Make ready for nix flakes
   nix.package = pkgs.nixUnstable;
@@ -25,17 +25,11 @@
     binaryCachePublicKeys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo=" ];
   };
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-  boot.initrd.checkJournalingFS = false;
-  
-  networking.hostName = "nixos"; # Define your hostname.
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
@@ -45,7 +39,7 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp0s3.useDHCP = true;
+  networking.interfaces.wlp2s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -63,28 +57,30 @@
 
 
   # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  # emabelint awesomewm https://nixos.wiki/wiki/Awesome
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.displayManager.defaultSession = "none+awesome";
+  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.windowManager.awesome.enable = true;
+  
   services.xserver = {
-      enable = true;
+     enable = true;
 
-    
-      displayManager = {
-          sddm.enable = true;
-          defaultSession = "none+awesome";
-      };
+     dpi = 180;
 
-      windowManager.awesome = {
-        enable = true;
-        luaModules = with pkgs.luaPackages; [
-          luarocks # is the package manager for Lua modules
-          luadbi-mysql # Database abstraction layer
-        ];
+     displayManager = {
+         sddm.enable = true;
+         defaultSession = "none+awesome";
+     };
 
-      };
-    };  
+     windowManager.awesome = {
+       enable = true;
+       luaModules = with pkgs.luaPackages; [
+         luarocks # is the package manager for Lua modules
+         luadbi-mysql # Database abstraction layer
+       ];
+
+     };
+   };
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -95,15 +91,21 @@
 
   # Enable sound.
   sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  # users.users.jane = {
+  #   isNormalUser = true;
+  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  # };
   users.users.nik = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    home = "/home/nik";
+    description = "Nik";
+    extraGroups = [ "wheel"];
   };
 
   # to be able to install chrome
@@ -116,6 +118,7 @@
     wget
     google-chrome
     gcc
+    git
     (let 
       my-python-packages = python-packages: with python-packages; [
          base58
@@ -142,7 +145,6 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  programs.ssh.startAgent = true; 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -156,7 +158,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-  
-  # virtualisation.virtualbox.guest.enable = true;
+
 }
 
