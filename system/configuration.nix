@@ -11,7 +11,7 @@
     ];
   
   # copied from (modulesPath + "/hardware/network/broadcom-43xx.nix")
-  hardware.enableRedistributableFirmware = true;
+  # hardware.enableRedistributableFirmware = true;
   
   # Make ready for nix flakes
   nix.package = pkgs.nixUnstable;
@@ -40,6 +40,10 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.wlp2s0.useDHCP = true;
+  
+  # Enabling bluetooth https://nixos.wiki/wiki/Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
