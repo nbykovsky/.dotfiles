@@ -24,6 +24,7 @@
     lastpass-cli
     terminator
     alacritty
+    firefox
   ];
 
   home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;
