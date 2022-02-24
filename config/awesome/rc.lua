@@ -340,7 +340,8 @@ globalkeys = gears.table.join(
     -- Media keys
     awful.key({}, "XF86AudioMute", function()  awful.spawn("amixer -q set Master toggle", false) end, {}),
     awful.key({}, "XF86AudioLowerVolume", function()  awful.spawn("amixer -q set Master 5%- unmute", false) end, {}),
-    awful.key({}, "XF86AudioRaiseVolume", function()  awful.spawn("amixer -q set Master 5%+ unmute", false) end, {})
+    awful.key({}, "XF86AudioRaiseVolume", function()  awful.spawn("amixer -q set Master 5%+ unmute", false) end, {}),
+    awful.key({ modkey }, "c", function()  awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/") end, {description = "change wallpaper", group = "applications"})
 )
 
 clientkeys = gears.table.join(
@@ -579,3 +580,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 beautiful.useless_gap = 8
 
+awful.util.spawn_with_shell("compton")
+awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/ ")

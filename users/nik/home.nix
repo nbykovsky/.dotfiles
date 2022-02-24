@@ -14,6 +14,7 @@
   # Source big modules
   programs.neovim = nvimFlake.vimConfig;
 
+
   # programs.ssh.startAgent = true; 
 
   home.packages = with pkgs; [
@@ -25,10 +26,13 @@
     terminator
     alacritty
     firefox
+    nitrogen
+    compton
   ];
 
   home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;
   home.file.".config/awesome/rc.lua".source = ../../config/awesome/rc.lua;
+  home.file.".config/wallpapers".source = ../../config/wallpapers;
   
    # lib.modules.awesome.enable = true; 
  
