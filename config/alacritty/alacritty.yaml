@@ -40,8 +40,8 @@ window:
   #position:
   #  x: 0
   #  y: 0
-
   # Window padding (changes require restart)
+
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
@@ -67,8 +67,9 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.7
+  opacity: 0.9
 
+background_opacity: 0.9
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -159,7 +160,7 @@ font:
 #draw_bold_text_with_bright_colors: false
 
 # Colors (Tomorrow Night)
-#colors:
+# colors:
   # Default colors
   #primary:
   #  background: '#1d1f21'
@@ -300,7 +301,7 @@ font:
   # Whether or not `window.opacity` applies to all cell backgrounds or only to
   # the default background. When set to `true` all cells will be transparent
   # regardless of their background color.
-  #transparent_background_colors: false
+  # transparent_background_colors: true
 
 # Bell
 #
