@@ -144,7 +144,8 @@
     google-chrome
     gcc
     git
-    acpi
+    acpi # battery widget
+    brightnessctl # backlite
     (let 
       my-python-packages = python-packages: with python-packages; [
          base58

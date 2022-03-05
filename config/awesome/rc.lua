@@ -363,6 +363,9 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioMute", function()  volume_widget:toggle() end, {}),
     awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end, {}),
     awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end, {}),
+
+    awful.key({}, "XF86MonBrightnessDown", function () awful.util.spawn_with_shell("brightnessctl set 2-") end, {}),
+    awful.key({}, "XF86MonBrightnessUp", function ()  awful.util.spawn_with_shell("brightnessctl set +2") end, {}),
     
   awful.key({ modkey }, "c", function()  awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/") end, {description = "change wallpaper", group = "applications"})
 )
