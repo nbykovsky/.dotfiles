@@ -601,3 +601,6 @@ beautiful.useless_gap = 5
 
 awful.util.spawn_with_shell("compton")
 awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/ ")
+
+-- tray
+awful.util.spawn("blueman-applet")

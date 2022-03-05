@@ -40,6 +40,9 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.wlp2s0.useDHCP = true;
+
+  networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
   
   # Enabling bluetooth https://nixos.wiki/wiki/Bluetooth
   hardware.bluetooth.enable = true;
@@ -124,7 +127,7 @@
     isNormalUser = true;
     home = "/home/nik";
     description = "Nik";
-    extraGroups = [ "wheel"];
+    extraGroups = [ "wheel" "networkmanager"];
   };
 
   # to be able to install chrome
