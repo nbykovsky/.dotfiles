@@ -227,9 +227,9 @@ awful.screen.connect_for_each_screen(function(s)
               device = 'default'
               --with_icon = 'true'
             },
-            --mykeyboardlayout,
-            -- wibox.widget.systray(),
-            -- mytextclock,
+            mykeyboardlayout,
+            wibox.widget.systray(),
+            mytextclock,
             --s.mylayoutbox,
         },
     }
