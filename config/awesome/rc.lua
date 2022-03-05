@@ -21,6 +21,7 @@ require("awful.hotkeys_popup.keys")
 local home = os.getenv("HOME")
 
 local volume_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/volume-widget/volume.lua')
+local batteryarc_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/batteryarc-widget/batteryarc.lua')
 -- local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 
 
@@ -227,6 +228,11 @@ awful.screen.connect_for_each_screen(function(s)
               device = 'default'
               --with_icon = 'true'
             },
+            batteryarc_widget({
+                show_current_level = true,
+                arc_thickness = 5,
+                size = 40
+            }),
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,

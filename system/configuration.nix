@@ -47,6 +47,9 @@
   # Enabling bluetooth https://nixos.wiki/wiki/Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+ 
+  # for power awesomewm widget
+  # services.acpid.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -141,6 +144,7 @@
     google-chrome
     gcc
     git
+    acpi
     (let 
       my-python-packages = python-packages: with python-packages; [
          base58
