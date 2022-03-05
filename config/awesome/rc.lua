@@ -20,6 +20,10 @@ require("awful.hotkeys_popup.keys")
 
 local home = os.getenv("HOME")
 
+local volume_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/volume-widget/volume.lua')
+-- local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -169,6 +173,7 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -215,10 +220,17 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
+            volume_widget {
+              widget_type = 'arc',
+              size = 40,
+              thickness = 5,
+              device = 'default'
+              --with_icon = 'true'
+            },
+            --mykeyboardlayout,
+            -- wibox.widget.systray(),
+            -- mytextclock,
+            --s.mylayoutbox,
         },
     }
 end)
@@ -338,10 +350,15 @@ globalkeys = gears.table.join(
               {description = "open browser", group = "applications"}),
 
     -- Media keys
-    awful.key({}, "XF86AudioMute", function()  awful.spawn("amixer -q set Master toggle", false) end, {}),
-    awful.key({}, "XF86AudioLowerVolume", function()  awful.spawn("amixer -q set Master 5%- unmute", false) end, {}),
-    awful.key({}, "XF86AudioRaiseVolume", function()  awful.spawn("amixer -q set Master 5%+ unmute", false) end, {}),
-    awful.key({ modkey }, "c", function()  awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/") end, {description = "change wallpaper", group = "applications"})
+    -- awful.key({}, "XF86AudioMute", function()  awful.spawn("amixer -q set Master toggle", false) end, {}),
+    -- awful.key({}, "XF86AudioLowerVolume", function()  awful.spawn("amixer -q set Master 5%- unmute", false) end, {}),
+    -- awful.key({}, "XF86AudioRaiseVolume", function()  awful.spawn("amixer -q set Master 5%+ unmute", false) end, {}),
+    
+    awful.key({}, "XF86AudioMute", function()  volume_widget:toggle() end, {}),
+    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end, {}),
+    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end, {}),
+    
+  awful.key({ modkey }, "c", function()  awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/") end, {description = "change wallpaper", group = "applications"})
 )
 
 clientkeys = gears.table.join(
@@ -580,7 +597,7 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-beautiful.useless_gap = 8
+beautiful.useless_gap = 5
 
 awful.util.spawn_with_shell("compton")
 awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/ ")

@@ -32,12 +32,22 @@
   ];
 
   home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;
+  
   home.file.".config/awesome/rc.lua".source = ../../config/awesome/rc.lua;
+
+  home.file.".config/awesome/awesome-wm-widgets".source = pkgs.fetchFromGitHub {
+    owner = "streetturtle";
+    repo = "awesome-wm-widgets";
+    rev = "b8e3a861f4829b2c3820e9a40294a3d9125fbf23";
+    sha256 = "1y3bbxczzrqk1d2636rc0z76x8648vf3f78dwsjwsy289zmby3dq";
+  };
+
   home.file.".config/wallpapers".source = ../../config/wallpapers;
   
    # lib.modules.awesome.enable = true; 
  
   imports = [
-    ../../config/terminator # config for terminator
+     ../../config/terminator # config for terminator
+    #../../config/awesome/awesome.nix
   ];
 }
