@@ -22,6 +22,7 @@ local home = os.getenv("HOME")
 
 local volume_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/volume-widget/volume.lua')
 local batteryarc_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/batteryarc-widget/batteryarc.lua')
+local calendar_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/calendar-widget/calendar.lua')
 -- local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 
 
@@ -115,6 +116,19 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+local cw = calendar_widget({
+    theme = 'nord',
+    placement = 'top_right',
+    -- start_sunday = true,
+    radius = 8,
+-- with customized next/previous (see table above)
+    previous_month_button = 1, -- left mouse button
+    next_month_button = 3,     -- right mouse button
+})
+mytextclock:connect_signal("button::press",
+    function(_, _, _, button)
+        if button == 1 then cw.toggle() end
+    end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
