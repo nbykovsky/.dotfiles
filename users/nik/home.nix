@@ -28,6 +28,8 @@
     firefox
     nitrogen
     compton
+    tdesktop
+    discord
     #picom
   ];
 
@@ -43,7 +45,9 @@
   };
 
   home.file.".config/wallpapers".source = ../../config/wallpapers;
-  
+ 
+  home.file.".config/discord/settings.js".source = ../../config/discord/settings.json;
+
    # lib.modules.awesome.enable = true; 
  
   imports = [
