@@ -26,8 +26,8 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "thefuck" ];
-      theme = "robbyrussell";
+      plugins = [ "git"];
+      theme = "agnoster";
     };
   };
   # programs.ssh.startAgent = true; 
