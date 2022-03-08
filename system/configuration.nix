@@ -47,7 +47,10 @@
   # Enabling bluetooth https://nixos.wiki/wiki/Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
- 
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # for power awesomewm widget
   # services.acpid.enable = true;
 

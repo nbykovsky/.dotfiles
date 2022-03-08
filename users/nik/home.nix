@@ -14,7 +14,22 @@
   # Source big modules
   programs.neovim = nvimFlake.vimConfig;
 
-
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -la";
+      # update = "sudo nixos-rebuild switch";
+    };
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "thefuck" ];
+      theme = "robbyrussell";
+    };
+  };
   # programs.ssh.startAgent = true; 
 
   home.packages = with pkgs; [
