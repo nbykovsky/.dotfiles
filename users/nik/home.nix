@@ -20,15 +20,20 @@
       ll = "ls -la";
       # update = "sudo nixos-rebuild switch";
     };
+    initExtra = ''
+      source ~/powerlevel10k/powerlevel10k.zsh-theme
+      POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+    '';
+      
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git"];
-      theme = "agnoster";
-    };
+    # oh-my-zsh = {
+    #   enable = true;
+    #   plugins = [ "git"];
+    #   theme = "agnoster";
+    # };
   };
   # programs.ssh.startAgent = true; 
 
@@ -62,6 +67,15 @@
   home.file.".config/wallpapers".source = ../../config/wallpapers;
  
   home.file.".config/discord/settings.js".source = ../../config/discord/settings.json;
+  
+  home.file."powerlevel10k".source = pkgs.fetchFromGitHub {
+    owner = "romkatv";
+    repo = "powerlevel10k";
+    rev = "f07d7baea36010bfa74708844d404517ea6ac473";
+    sha256 = "0208437mx12rnqwdmw3r9n5w6n8zq1h3y7h1nm8yr92acnxq8rz5";
+  };
+
+  home.file.".p10k.zsh".source = ../../config/p10k/.p10k.zsh;
 
    # lib.modules.awesome.enable = true; 
  
