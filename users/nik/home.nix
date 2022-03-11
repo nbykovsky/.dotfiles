@@ -1,4 +1,12 @@
 { config, pkgs, nvimFlake, ... }:
+# let
+#   powerlevel10k = pkgs.fetchFromGitHub {
+#     owner = "romkatv";
+#     repo = "powerlevel10k";
+#     rev = "b7d90c84671183797bdec17035fc2d36b5d12292";
+#     sha256 = "0nzvshv3g559mqrlf4906c9iw4jw8j83dxjax275b2wi8ix0wgmj";
+#   };
+# in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -21,19 +29,25 @@
       # update = "sudo nixos-rebuild switch";
     };
     initExtra = ''
-      source ~/powerlevel10k/powerlevel10k.zsh-theme
       POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      source ~/.p10k.zsh
     '';
       
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
+    #promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     # oh-my-zsh = {
     #   enable = true;
     #   plugins = [ "git"];
     #   theme = "agnoster";
     # };
+    # plugins = [{
+    #   name = "powerlevel10k";
+    #   src = powerlevel10k;
+    # }];
   };
   # programs.ssh.startAgent = true; 
 
@@ -68,12 +82,12 @@
  
   home.file.".config/discord/settings.js".source = ../../config/discord/settings.json;
   
-  home.file."powerlevel10k".source = pkgs.fetchFromGitHub {
-    owner = "romkatv";
-    repo = "powerlevel10k";
-    rev = "f07d7baea36010bfa74708844d404517ea6ac473";
-    sha256 = "0208437mx12rnqwdmw3r9n5w6n8zq1h3y7h1nm8yr92acnxq8rz5";
-  };
+  # home.file."powerlevel10k".source = pkgs.fetchFromGitHub {
+  #   owner = "romkatv";
+  #   repo = "powerlevel10k";
+  #   rev = "f07d7baea36010bfa74708844d404517ea6ac473";
+  #   sha256 = "0208437mx12rnqwdmw3r9n5w6n8zq1h3y7h1nm8yr92acnxq8rz5";
+  # };
 
   home.file.".p10k.zsh".source = ../../config/p10k/.p10k.zsh;
 
