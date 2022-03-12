@@ -64,7 +64,8 @@
     compton
     tdesktop
     discord
-    #picom
+    fzf
+    ripgrep
   ];
 
   home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;
