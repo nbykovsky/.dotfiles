@@ -1,4 +1,4 @@
-{pkgs, config, ...}:
+{pkgs, ...}:
 let
   path = toString ./.;
   project-nvim-cust = pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -38,11 +38,34 @@ in
 {
   enable = true;
   vimAlias = true;
+  # extraConfig = ''
+  #   luafile ${path}/lua/user/options.lua
+  #   luafile ${path}/lua/user/keymaps.lua
+  #   luafile ${path}/lua/user/colorscheme.lua
+  #   luafile ${path}/lua/user/cmp.lua
+  #   luafile ${path}/lua/user/telescope.lua
+  #   luafile ${path}/lua/user/treesitter.lua
+  #   luafile ${path}/lua/user/autopairs.lua
+  #   luafile ${path}/lua/user/comment.lua
+  #   luafile ${path}/lua/user/gitsigns.lua
+  #   luafile ${path}/lua/user/nvim-tree.lua
+  #   luafile ${path}/lua/user/bufferline.lua
+  #   luafile ${path}/lua/user/lualine.lua
+  #   luafile ${path}/lua/user/toggleterm.lua
+  #   luafile ${path}/lua/user/project.lua
+  #   luafile ${path}/lua/user/impatient.lua
+  #   luafile ${path}/lua/user/indentline.lua
+  #   luafile ${path}/lua/user/dap.lua
+  #   luafile ${path}/lua/user/whichkey.lua
+  #   luafile ${path}/lua/user/autocommands.lua
+  #   luafile ${path}/lua/user/lsp/init.lua
+  #   luafile ${path}/lua/user/lsp/handlers.lua
+  #   " luafile ${path}/lua/user/lsp/null-ls.lua
+  # '';
   extraConfig = ''
-    luafile ${path}/submodule/lua/user/options.lua
-    luafile ${path}/submodule/lua/user/keymaps.lua
-    luafile ${path}/submodule/lua/user/nvim-tree.lua
-    luafile ${path}/submodule/lua/user/colorscheme.lua
+    luafile ${path}/lua/user/options.lua
+    luafile ${path}/lua/user/keymaps.lua
+    luafile ${path}/lua/user/colorscheme.lua
   '';
 
   plugins = with pkgs.vimPlugins; [

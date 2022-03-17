@@ -1,12 +1,13 @@
 { config, pkgs, nvimFlake, ... }:
-# let
+let
+  vimConfig = import ../../config/nvim/default.nix ;
 #   powerlevel10k = pkgs.fetchFromGitHub {
 #     owner = "romkatv";
 #     repo = "powerlevel10k";
 #     rev = "b7d90c84671183797bdec17035fc2d36b5d12292";
 #     sha256 = "0nzvshv3g559mqrlf4906c9iw4jw8j83dxjax275b2wi8ix0wgmj";
 #   };
-# in
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -20,7 +21,7 @@
   # Enable home-manager
   programs.home-manager.enable = true;
   # Source big modules
-  programs.neovim = nvimFlake.vimConfig;
+  programs.neovim = vimConfig pkgs;
 
   programs.zsh = {
     enable = true;
@@ -38,16 +39,6 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    #promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-    # oh-my-zsh = {
-    #   enable = true;
-    #   plugins = [ "git"];
-    #   theme = "agnoster";
-    # };
-    # plugins = [{
-    #   name = "powerlevel10k";
-    #   src = powerlevel10k;
-    # }];
   };
   # programs.ssh.startAgent = true; 
 
@@ -93,9 +84,12 @@
   home.file.".p10k.zsh".source = ../../config/p10k/.p10k.zsh;
 
    # lib.modules.awesome.enable = true; 
- 
+
+  #home.file.".config/nvim".source = ../../config/nvim;
+
   imports = [
      ../../config/terminator # config for terminator
     #../../config/awesome/awesome.nix
+    #../../config/nvim
   ];
 }

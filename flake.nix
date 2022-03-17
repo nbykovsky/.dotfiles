@@ -8,9 +8,11 @@
 
     nvimFlake.url = "github:nbykovsky/neovim";
     nvimFlake.inputs.nixpkgs.follows = "nixpkgs";
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
-  outputs = { nixpkgs, home-manager, nvimFlake, ... }: 
+  outputs = { nixpkgs, home-manager, nvimFlake, rust-overlay, ... }: 
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -41,6 +43,10 @@
         inherit system;
         modules = [
                 ./system/configuration.nix
+                ({ pkgs, ... }: {
+                  nixpkgs.overlays = [ rust-overlay.overlay ];
+                  environment.systemPackages = [ pkgs.rust-bin.stable.latest.default pkgs.rust-analyzer];
+                })
         ];
       }; 
     };
