@@ -34,6 +34,17 @@ let
     };
     meta.homepage = "https://github.com/LunarVim/darkplus.nvim/";
   };
+  rust-cust = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "rust.vim";
+    version = "2022-01-18";
+    src = pkgs.fetchFromGitHub {
+      owner = "rust-lang";
+      repo = "rust.vim";
+      rev = "4aa69b84c8a58fcec6b6dad6fe244b916b1cf830";
+      sha256 = "07nh8gvkwq91i7qcz0rk5jlc8sb4d3af4zq2892kmmw576zg1wd8";
+    };
+    meta.homepage = "https://github.com/rust-lang/rust.vim/";
+  };
 in
 {
   enable = true;
@@ -66,6 +77,12 @@ in
     luafile ${path}/lua/user/options.lua
     luafile ${path}/lua/user/keymaps.lua
     luafile ${path}/lua/user/colorscheme.lua
+    luafile ${path}/lua/user/cmp.lua
+    luafile ${path}/lua/user/autopairs.lua
+    luafile ${path}/lua/user/indentline.lua
+    luafile ${path}/lua/user/lsp/init.lua
+    " luafile ${path}/lua/user/lsp/handlers.lua
+    " luafile ${path}/lua/user/lsp/null-ls.lua
   '';
 
   plugins = with pkgs.vimPlugins; [
@@ -78,12 +95,12 @@ in
     bufferline-nvim
     vim-bbye
     lualine-nvim
-    toggleterm-nvim
+    # toggleterm-nvim
     project-nvim-cust
     impatient-nvim-cust
     indent-blankline-nvim
     FixCursorHold-nvim
-    which-key-nvim 
+    #which-key-nvim 
     
     # vim-code-dark
     darkplus-nvim-cust 
@@ -102,7 +119,7 @@ in
     nvim-lspconfig
     null-ls-nvim
 
-    telescope-nvim
+    #telescope-nvim
 
     nvim-treesitter
     nvim-ts-context-commentstring
@@ -110,5 +127,7 @@ in
     gitsigns-nvim
 
     nvim-dap
+
+    rust-cust
   ];
 }
