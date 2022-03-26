@@ -52,11 +52,21 @@ in
   extraConfig = ''
     luafile ${path}/lua/options.lua
     luafile ${path}/lua/rust.lua
+    luafile ${path}/lua/cmp.lua
   '';
 
   plugins = with pkgs.vimPlugins; [
     darkplus-nvim-cust
     rust-cust # used for rustfmt
     nvim-lspconfig
+    
+    nvim-cmp
+    cmp-buffer
+    cmp-path
+    cmp-cmdline
+    cmp_luasnip
+    luasnip
+    cmp-nvim-lsp
+
   ];
 }
