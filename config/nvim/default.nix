@@ -53,6 +53,7 @@ in
     luafile ${path}/lua/options.lua
     luafile ${path}/lua/rust.lua
     luafile ${path}/lua/cmp.lua
+    luafile ${path}/lua/indentline.lua
   '';
 
   plugins = with pkgs.vimPlugins; [
@@ -67,6 +68,10 @@ in
     cmp_luasnip
     luasnip
     cmp-nvim-lsp
+
+    auto-pairs
+
+    indent-blankline-nvim
 
   ];
 }
