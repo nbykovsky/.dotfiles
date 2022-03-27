@@ -42,3 +42,4 @@ for k, v in pairs(options) do
 end
 
 vim.cmd [[colorscheme darkplus]]           -- colorscheme is installed as package
+

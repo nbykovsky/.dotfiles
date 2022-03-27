@@ -27,6 +27,14 @@ in
     enable = true;
     shellAliases = {
       ll = "ls -la";
+      cr = "cargo run";
+      ct = "cargo test";
+      gc = "git commit -am";
+      gp = "git push";
+      gb = "git checkout -B";
+      v  = "nvim";
+      au = "~/.dotfiles/apply-users.sh";
+      as = "~/.dotfiles/apply-system.sh";
       # update = "sudo nixos-rebuild switch";
     };
     initExtra = ''

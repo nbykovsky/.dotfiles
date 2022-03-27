@@ -68,6 +68,7 @@ in
     cmp_luasnip
     luasnip
     cmp-nvim-lsp
+    friendly-snippets
 
     auto-pairs
 
