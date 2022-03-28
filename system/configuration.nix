@@ -76,24 +76,28 @@
   # services.xserver.windowManager.awesome.enable = true;
   
   services.xserver = {
-     enable = true;
+   enable = true;
 
-     dpi = 180;
+   dpi = 180;
 
-     displayManager = {
-         sddm.enable = true;
-         defaultSession = "none+awesome";
-     };
-
-     windowManager.awesome = {
-       enable = true;
-       luaModules = with pkgs.luaPackages; [
-         luarocks # is the package manager for Lua modules
-         luadbi-mysql # Database abstraction layer
-       ];
-
-     };
+   displayManager = {
+       sddm.enable = true;
+       defaultSession = "none+awesome";
    };
+
+   windowManager.awesome = {
+     enable = true;
+     luaModules = with pkgs.luaPackages; [
+       luarocks # is the package manager for Lua modules
+       luadbi-mysql # Database abstraction layer
+     ];
+
+   };
+
+   layout = "us,ru";
+   # xkbVariant = "workman,";
+   xkbOptions = "grp:alt_shift_toggle";
+  };
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
