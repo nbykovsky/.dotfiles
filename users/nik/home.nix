@@ -32,6 +32,7 @@ in
       gc = "git commit -am";
       gp = "git push";
       gb = "git checkout -B";
+      gs = "git status";
       v  = "nvim";
       au = "~/.dotfiles/apply-users.sh";
       as = "~/.dotfiles/apply-system.sh";
