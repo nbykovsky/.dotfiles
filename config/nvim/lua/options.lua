@@ -43,3 +43,5 @@ end
 
 vim.cmd [[colorscheme darkplus]]           -- colorscheme is installed as package
 
+vim.api.nvim_set_keymap("i", "<C-l>", "<ESC>$a", {noremap=true, silent=true})
+

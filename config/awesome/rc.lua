@@ -23,6 +23,7 @@ local home = os.getenv("HOME")
 local volume_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/volume-widget/volume.lua')
 local batteryarc_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/batteryarc-widget/batteryarc.lua')
 local calendar_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/calendar-widget/calendar.lua')
+local logout_menu_widget = dofile(home .. '/.config/awesome/awesome-wm-widgets/logout-menu-widget/logout-menu.lua')
 -- local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 
 
@@ -289,6 +290,7 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
+            logout_menu_widget() 
             --s.mylayoutbox,
         },
     }
