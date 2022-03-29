@@ -242,13 +242,13 @@ globalkeys = gears.table.join(
               {description = "open browser", group = "applications"}),
 
     -- Media keys
-    -- awful.key({}, "XF86AudioMute", function()  awful.spawn("amixer -q set Master toggle", false) end, {}),
-    -- awful.key({}, "XF86AudioLowerVolume", function()  awful.spawn("amixer -q set Master 5%- unmute", false) end, {}),
-    -- awful.key({}, "XF86AudioRaiseVolume", function()  awful.spawn("amixer -q set Master 5%+ unmute", false) end, {}),
+    awful.key({}, "XF86AudioMute", function()  awful.spawn("amixer -q set Master toggle", false) end, {}),
+    awful.key({}, "XF86AudioLowerVolume", function()  awful.spawn("amixer -q set Master 5%- unmute", false) end, {}),
+    awful.key({}, "XF86AudioRaiseVolume", function()  awful.spawn("amixer -q set Master 5%+ unmute", false) end, {}),
     
-    awful.key({}, "XF86AudioMute", function()  volume_widget:toggle() end, {}),
-    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end, {}),
-    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end, {}),
+    --awful.key({}, "XF86AudioMute", function()  volume_widget:toggle() end, {}),
+    --awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end, {}),
+    --awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end, {}),
 
     awful.key({}, "XF86MonBrightnessDown", function () awful.util.spawn_with_shell("brightnessctl set 2-") end, {}),
     awful.key({}, "XF86MonBrightnessUp", function ()  awful.util.spawn_with_shell("brightnessctl set +2") end, {}),
