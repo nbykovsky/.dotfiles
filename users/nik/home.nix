@@ -36,6 +36,7 @@ in
       v  = "nvim";
       au = "~/.dotfiles/apply-users.sh";
       as = "~/.dotfiles/apply-system.sh";
+      alacritty = "alacritty --config-file ~/.config/alacritty/alacritty.yaml";
       # update = "sudo nixos-rebuild switch";
     };
     initExtra = ''
@@ -66,6 +67,8 @@ in
     discord
     fzf
     ripgrep
+    dmenu
+    polybar
   ];
 
   home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;

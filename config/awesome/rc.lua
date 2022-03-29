@@ -288,7 +288,7 @@ awful.screen.connect_for_each_screen(function(s)
                 size = 40
             }),
             mykeyboardlayout,
-            wibox.widget.systray(),
+            --wibox.widget.systray(),
             mytextclock,
             logout_menu_widget() 
             --s.mylayoutbox,
@@ -389,7 +389,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    awful.key({ modkey },            "r",     function () awful.util.spawn_with_shell("dmenu_run") end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
@@ -667,7 +667,7 @@ client.connect_signal("unfocus", function(c)
 end)
 -- }}}
 
-beautiful.useless_gap = 5
+beautiful.useless_gap =4 
 
 awful.util.spawn_with_shell("compton")
 awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/ ")

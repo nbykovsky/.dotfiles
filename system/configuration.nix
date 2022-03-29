@@ -163,7 +163,7 @@
   ];
 
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" ]; })
+    (nerdfonts.override { fonts = [ "Hack" "Iosevka"]; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
