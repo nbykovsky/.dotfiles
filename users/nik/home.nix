@@ -69,6 +69,7 @@ in
     ripgrep
     dmenu
     polybar
+    psmisc
   ];
 
   home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;
@@ -94,6 +95,8 @@ in
   # };
 
   home.file.".p10k.zsh".source = ../../config/p10k/.p10k.zsh;
+
+  home.file.".config/polybar".source = ../../config/polybar;
 
    # lib.modules.awesome.enable = true; 
 
