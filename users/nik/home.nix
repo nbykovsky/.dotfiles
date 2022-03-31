@@ -76,7 +76,6 @@ in
   home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;
   
   home.file.".config/awesome/rc.lua".source = ../../config/awesome/rc.lua;
-  home.file.".config/awesome/toggle_touchpad.sh".source = ../../config/awesome/toggle_touchpad.sh;
 
   home.file.".config/awesome/awesome-wm-widgets".source = pkgs.fetchFromGitHub {
     owner = "streetturtle";

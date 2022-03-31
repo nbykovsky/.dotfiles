@@ -216,7 +216,7 @@ globalkeys = gears.table.join(
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
-    awful.key({                   }, "F7", function () awful.util.spawn("toggle_touchpad") end,
+    awful.key({                   }, "F7", function () awful.util.spawn_with_shell("toggle_touchpad") end,
               {description = "toggle touchpad", group = "awesome"}),
 
     awful.key({ modkey, "Control" }, "n",
