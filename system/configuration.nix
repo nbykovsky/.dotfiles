@@ -160,6 +160,9 @@
       python-with-my-packages = python3.withPackages my-python-packages;
      in
       python-with-my-packages)
+    (import ./get_touchpad_device.nix)
+    (import ./status_touchpad.nix)
+    (import ./toggle_touchpad.nix)
   ];
 
   fonts.fonts = with pkgs; [

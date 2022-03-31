@@ -216,6 +216,8 @@ globalkeys = gears.table.join(
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
+    awful.key({                   }, "F7", function () awful.util.spawn(home .. "/.config/awesome/toggle_touchpad.sh") end,
+              {description = "toggle touchpad", group = "awesome"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -253,7 +255,7 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86MonBrightnessDown", function () awful.util.spawn_with_shell("brightnessctl set 2-") end, {}),
     awful.key({}, "XF86MonBrightnessUp", function ()  awful.util.spawn_with_shell("brightnessctl set +2") end, {}),
     
-  awful.key({ modkey }, "c", function()  awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/") end, {description = "change wallpaper", group = "applications"})
+    awful.key({ modkey }, "c", function()  awful.util.spawn_with_shell("nitrogen --random --set-scaled ~/.config/wallpapers/") end, {description = "change wallpaper", group = "applications"})
 )
 
 clientkeys = gears.table.join(
