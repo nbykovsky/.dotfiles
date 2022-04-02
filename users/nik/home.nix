@@ -56,6 +56,9 @@ in
     enable = true;
     userName  = "Nik Bykovsky";
     userEmail = "nikolay.bykovsky@gmail.com";
+    extraConfig = {
+      core.editor = "nvim";
+    };
   };
   home.packages = with pkgs; [
     # neovim
