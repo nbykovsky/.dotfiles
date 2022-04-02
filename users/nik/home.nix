@@ -52,6 +52,11 @@ in
   };
   # programs.ssh.startAgent = true; 
 
+  programs.git = {
+    enable = true;
+    userName  = "Nik Bykovsky";
+    userEmail = "nikolay.bykovsky@gmail.com";
+  };
   home.packages = with pkgs; [
     # neovim
     git

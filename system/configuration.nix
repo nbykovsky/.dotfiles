@@ -143,6 +143,7 @@
   # to be able to install chrome
   nixpkgs.config.allowUnfree = true;
 
+  environment.variables.EDITOR = "nvim";
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -150,7 +151,7 @@
     wget
     google-chrome
     gcc
-    git
+    #git
     acpi # battery widget
     brightnessctl # backlite
     (let 

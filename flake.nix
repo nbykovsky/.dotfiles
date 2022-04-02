@@ -45,7 +45,7 @@
                 ./system/configuration.nix
                 ({ pkgs, ... }: {
                   nixpkgs.overlays = [ rust-overlay.overlay ];
-                  environment.systemPackages = [ pkgs.rust-bin.stable.latest.default pkgs.rust-analyzer];
+                  environment.systemPackages = [ pkgs.rust-bin.nightly.latest.default pkgs.rust-analyzer];
                 })
         ];
       }; 
