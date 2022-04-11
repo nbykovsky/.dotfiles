@@ -91,6 +91,7 @@ in
     polybar
     psmisc
     xclip
+    libreoffice
   ];
 
   home.file.".config/alacritty/alacritty.yaml".source = ../../config/alacritty/alacritty.yaml;
