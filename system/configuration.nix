@@ -137,7 +137,7 @@
     isNormalUser = true;
     home = "/home/nik";
     description = "Nik";
-    extraGroups = [ "wheel" "networkmanager"];
+    extraGroups = [ "wheel" "networkmanager" "lxd"];
   };
 
   # to be able to install chrome
@@ -169,6 +169,8 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack" "Iosevka"]; })
   ];
+
+  virtualisation.lxd.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -70,6 +70,7 @@ in
       vscodevim.vim
       yzhang.markdown-all-in-one
       matklad.rust-analyzer
+      ms-vscode-remote.remote-ssh
     ];
   };
   home.packages = with pkgs; [
