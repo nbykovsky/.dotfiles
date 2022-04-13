@@ -42,6 +42,8 @@
   networking.interfaces.wlp2s0.useDHCP = true;
 
   networking.networkmanager.enable = true;
+  #networking.networkmanager.dns = "systemd-resolved";
+  services.resolved.enable = true;
   programs.nm-applet.enable = true;
   
   # Enabling bluetooth https://nixos.wiki/wiki/Bluetooth
