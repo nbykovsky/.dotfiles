@@ -174,6 +174,7 @@
 
   virtualisation.lxd.enable = true;
 
+  # imports configuration to lxd service
   systemd.services."lxd-preseed" = {
       description = "Preseed LXD";
       wantedBy = [ "multi-user.target" ];
@@ -183,6 +184,25 @@
         ExecStart = pkgs.writers.writeDash "preseed" ''
           cat ${../config/lxd/lxd.yaml} | ${pkgs.lxd}/bin/lxd init --preseed
         '';
+      };
+  };
+
+  # configures lxd domain containers could be reached using <name>.lxd
+  systemd.services."lxd-domain" = {
+      description = "LXD domain";
+      wantedBy = [ "multi-user.target" ];
+      after = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = pkgs.writers.writeDash "domain-start" ''
+          systemd-resolve --interface=lxdbr0 --set-dns=10.97.234.1 --set-domain=lxd
+        '';
+        ExecStop = pkgs.writers.writeDash "domains-stop" ''
+          systemd-resolve --interface lxdbr0 --revert
+        '';
+        RemainAfterExit=true;
+        # StandardOutput="journal";
+
       };
   };
 
