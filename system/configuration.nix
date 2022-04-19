@@ -174,6 +174,18 @@
 
   virtualisation.lxd.enable = true;
 
+  systemd.services."lxd-preseed" = {
+      description = "Preseed LXD";
+      wantedBy = [ "multi-user.target" ];
+      requires = [ "lxd.socket" ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = pkgs.writers.writeDash "preseed" ''
+          cat ${../config/lxd/lxd.yaml} | ${pkgs.lxd}/bin/lxd init --preseed
+        '';
+      };
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

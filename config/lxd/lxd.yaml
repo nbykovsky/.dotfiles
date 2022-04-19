@@ -1,0 +1,44 @@
+config:
+  images.auto_update_interval: "0"
+networks:
+- config:
+    ipv4.address: 10.97.234.1/24
+    ipv4.nat: "true"
+    ipv6.address: fd42:d5ea:dd8a:b382::1/64
+    ipv6.nat: "true"
+  description: ""
+  name: lxdbr0
+  type: bridge
+  project: default
+storage_pools:
+- config:
+    source: /var/lib/lxd/storage-pools/default
+  description: ""
+  name: default
+  driver: dir
+profiles:
+- config:
+    user.user-data: |
+      #cloud-config
+      ssh_authorized_keys:
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFkSwW+Vs3t0cGtL/kG7GAsXNlLAlLj5OiZmWD4VfvcG nikolay.bykovsky@gmail.com
+  description: Default LXD profile
+  devices:
+    eth0:
+      name: eth0
+      network: lxdbr0
+      type: nic
+    root:
+      path: /
+      pool: default
+      type: disk
+  name: default
+projects:
+- config:
+    features.images: "true"
+    features.networks: "true"
+    features.profiles: "true"
+    features.storage.volumes: "true"
+  description: Default LXD project
+  name: default
+
